@@ -1,4 +1,4 @@
-from qt_core import *
+from gui.core.qt_core import *
 
 style = '''
 QCheckBox::indicator {{

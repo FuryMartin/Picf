@@ -23,11 +23,11 @@ from gui.widgets.py_table_widget.py_table_widget import PyTableWidget
 from . functions_main_window import *
 import sys
 import os
-from face_functions import get_duplicate_pics, get_image_folder, search_person_pics, sorter_main
+from utils.face_functions import get_duplicate_pics, get_image_folder, search_person_pics, sorter_main
 
 # IMPORT QT CORE
 # ///////////////////////////////////////////////////////////////
-from qt_core import *
+from gui.core.qt_core import *
 
 # IMPORT SETTINGS
 # ///////////////////////////////////////////////////////////////

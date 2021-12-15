@@ -24,7 +24,7 @@ import os
 class Settings(object):
     # APP PATH
     # ///////////////////////////////////////////////////////////////
-    json_file = "settings.json"
+    json_file = "resources\settings.json"
     app_path = os.path.abspath(os.getcwd())
     settings_path = os.path.normpath(os.path.join(app_path, json_file))
     if not os.path.isfile(settings_path):

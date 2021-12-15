@@ -17,7 +17,7 @@
 # IMPORT QT CORE
 # ///////////////////////////////////////////////////////////////
 from gui.widgets.py_line_edit.py_line_edit import PyLineEdit
-from qt_core import *
+from gui.core.qt_core import *
 
 # PY CREDITS BAR AND VERSION
 # ///////////////////////////////////////////////////////////////

@@ -26,10 +26,10 @@ warnings.filterwarnings("ignore")
 
 from multiprocessing import Pool, cpu_count
 from math import ceil
-from facenet import compute_embedding
+from utils.facenet import compute_embedding
 from tensorflow.keras.models import load_model
 from tqdm import tqdm
-from display_by_person import load_json,get_persons,write_json
+from utils.display_by_person import load_json,get_persons,write_json
 
 
 def differ_paths(paths, root_dir):

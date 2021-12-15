@@ -7,9 +7,9 @@ import argparse
 import sys
 import json
 
-from CW import draw_graph,chinese_whispers
-from display_by_person import print_by_person,get_persons
-from display_by_person import get_persons, sort_by_person, load_json, get_persons_more
+from utils.CW import draw_graph,chinese_whispers
+from utils.display_by_person import print_by_person,get_persons
+from utils.display_by_person import get_persons, sort_by_person, load_json, get_persons_more
 
 def image_sorter(G):
     """Copies images from the source and pastes them to a directory.

@@ -1,16 +1,16 @@
-from sort_images import sort_images
-from display_by_person import  get_persons, get_persons_more,  print_by_person
+from utils.sort_images import sort_images
+from utils.display_by_person import  get_persons, get_persons_more,  print_by_person
 import time
-from embedder import embedder
+from utils.embedder import embedder
 import json
 import os
 import shutil
 import sys
-from display_by_person import *
+from utils.display_by_person import *
 from tensorflow.keras.models import load_model
-from facenet import compute_embedding
-from CW import draw_graph, chinese_whispers
-from sort_images import image_sorter
+from utils.facenet import compute_embedding
+from utils.CW import draw_graph, chinese_whispers
+from utils.sort_images import image_sorter
 from imagededup.methods import PHash
 
 def sorter_main(path):
@@ -37,7 +37,7 @@ def copy_images():
                 pass
 
 def get_image_folder():
-    with open('settings.json', 'r+',encoding='utf-8') as f:
+    with open('resources\settings.json', 'r+',encoding='utf-8') as f:
         settings = json.load(f)
     return settings['image_path']
 

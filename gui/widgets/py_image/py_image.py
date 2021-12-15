@@ -1,4 +1,4 @@
-from qt_core import *
+from gui.core.qt_core import *
 from .. py_push_button import *
 from .. py_checkbox import *
 import time

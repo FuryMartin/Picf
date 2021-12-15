@@ -1,5 +1,6 @@
 @echo on
 cd /d %~dp0
+cd /d %~dp0\resources
 call conda env create -f environment.yml
 call conda activate Ficipic
 cd /d %~dp0\imagededup

@@ -20,7 +20,7 @@ import sys
 
 # IMPORT QT CORE
 # ///////////////////////////////////////////////////////////////
-from qt_core import *
+from gui.core.qt_core import *
 
 # LOAD UI MAIN
 # ///////////////////////////////////////////////////////////////
@@ -28,7 +28,7 @@ from . ui_main import *
 
 from . flow_layout import *
 
-from display_by_person import *
+from utils.display_by_person import *
 
 import os
 import json
@@ -272,7 +272,7 @@ class MainFunctions():
 
     def select_image_directory(self):
         directory = QFileDialog.getExistingDirectory(None, "C:/")
-        with open('settings.json', 'r+',encoding='utf-8') as f:
+        with open('resources/settings.json', 'r+',encoding='utf-8') as f:
             if directory == '':
                 print("No folder selected")
                 return None
