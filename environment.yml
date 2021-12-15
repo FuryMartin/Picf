@@ -1,0 +1,19 @@
+name: Ficipic
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8.5
+  - dlib=19.22
+  - opencv=4.0.1
+  - pip=21.3.1
+  - networkx=2.5
+  - pillow=8.4.0
+  - tqdm=4.56.0
+  - scikit-learn=1.0.1
+  - PyWavelets=1.1.1
+  - pip:
+    - imutils==0.5.4
+    - PySide6==6.2.1
+    - tensorflow==2.7.0
+#prefix: C:\Users\Yashaswi\anaconda3\envs\sorter

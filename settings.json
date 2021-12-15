@@ -1,0 +1,36 @@
+{
+    "app_name": "Picf",
+    "version": "v0.1",
+    "copyright": "By: FuryMartin",
+    "year": 2021,
+    "theme_name": "default",
+    "custom_title_bar": true,
+    "startup_size": [
+        1030,
+        720
+    ],
+    "minimum_size": [
+        1030,
+        720
+    ],
+    "lef_menu_size": {
+        "minimum": 50,
+        "maximum": 200
+    },
+    "left_menu_content_margins": 3,
+    "left_column_size": {
+        "minimum": 0,
+        "maximum": 240
+    },
+    "right_column_size": {
+        "minimum": 0,
+        "maximum": 240
+    },
+    "time_animation": 0,
+    "font": {
+        "family": "苹方-简",
+        "title_size": 10,
+        "text_size": 9
+    },
+    "image_path": "D:/Code/AI_Face/Sort-By-Face_Backup/image_backup"
+}

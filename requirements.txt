@@ -1,0 +1,8 @@
+#conda install -c conda-forge dlib
+#conda install opencv
+#mannully setup imagededup==0.2.2
+imutils==0.5.4
+networkx==2.5
+PySide6==6.2.1
+tensorflow==2.7.0
+tqdm==4.56.1
