@@ -106,7 +106,7 @@ def save_embeddings(process_data):
 
 def embedder(source):
     #t1 = time.time()
-    args = {'source':source,'processes':8}
+    args = {'source':source,'processes':12}
     '''
     parser = argparse.ArgumentParser()
 

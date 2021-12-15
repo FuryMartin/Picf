@@ -251,10 +251,19 @@ class SetupMainWindow:
         self.func_btn_12.setMinimumHeight(40)
 
         def detect_finished():
-            self.ui.credits.copyright_label.setText("完成识别")
+            self.timer.stop()
+            self.ui.credits.copyright_label.setText("完成识别，耗时 {} 秒".format(self.timer_count))
             QMessageBox.information(self, "", "完成识别")
+        def print_time():
+            self.timer_count += 1
+            self.ui.credits.copyright_label.setText("正在识别中，识别速度约为3张/秒，请稍等。  已识别 {} 秒".format(self.timer_count))
+
         def create_detect_worker():
-            self.ui.credits.copyright_label.setText("正在识别中，识别速度约为3张/秒，请稍等。")
+            self.timer_count = 0
+            self.timer = QTimer()
+            self.timer.timeout.connect(lambda: print_time())
+            self.timer.start(1000)
+
             self.worker_detect = Worker('Detect')
             self.worker_detect.start()
             self.worker_detect.finished.connect(detect_finished)
