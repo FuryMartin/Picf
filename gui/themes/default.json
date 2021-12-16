@@ -12,18 +12,18 @@
         "icon_hover" : "#dce1ec",
         "icon_pressed" : "#6c99f4",
         "icon_active" : "#f5f6f9",
-        "context_color" : "#ff8c00",
+        "context_color" : "#ffb400",
         "context_hover" : "#6c99f4",
         "context_pressed" : "#3f6fd1",
         "text_title" : "#dce1ec",
-        "text_foreground" : "#8a95aa",
-        "text_description" : "#c3ccdf",
+        "text_foreground" : "#f5f6f9",
+        "text_description" : "#f5f6f9",
         "text_active" : "#dce1ec",
         "white" : "#f5f6f9",
         "pink" : "#ff007f",
         "green" : "#00ff7f",
         "red" : "#ff5555",
         "yellow" : "#f1fa8c",
-        "orange" : "#ff8c00"
+        "orange" : "#ffb400"
     }
 }

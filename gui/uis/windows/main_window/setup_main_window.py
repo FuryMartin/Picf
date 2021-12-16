@@ -68,40 +68,40 @@ class SetupMainWindow:
         {
             "btn_icon" : "icon_home.svg",
             "btn_id" : "btn_home",
-            "btn_text" : "Home",
-            "btn_tooltip" : "Home page",
+            "btn_text" : "首页",
+            "btn_tooltip" : "首页",
             "show_top" : True,
             "is_active" : True
         },
         {
             "btn_icon": "icon_folder_open.svg",
             "btn_id": "btn_page_pics",
-            "btn_text": "open pics",
-            "btn_tooltip": "open pics",
+            "btn_text": "分类结果",
+            "btn_tooltip": "分类结果",
             "show_top": True,
             "is_active": False
         },
         {
             "btn_icon": "icon_search.svg",
             "btn_id": "btn_page_search",
-            "btn_text": "open page search",
-            "btn_tooltip": "open page search",
+            "btn_text": "搜索结果",
+            "btn_tooltip": "搜索结果",
             "show_top": True,
             "is_active": False
         },
         {
             "btn_icon": "icon_signal.svg",
             "btn_id": "btn_page_duplicate",
-            "btn_text": "open page duplicate",
-            "btn_tooltip": "open page duplicate",
+            "btn_text": "分类结果",
+            "btn_tooltip": "分类结果",
             "show_top": True,
             "is_active": False
         },
         {
             "btn_icon": "icon_settings.svg",
             "btn_id": "btn_settings",
-            "btn_text": "open Settings",
-            "btn_tooltip": "open Settings",
+            "btn_text": "打开设置",
+            "btn_tooltip": "打开设置",
             "show_top": False,
             "is_active": False
         }
@@ -185,7 +185,7 @@ class SetupMainWindow:
         MainFunctions.set_left_column_menu(
             self,
             menu = self.ui.left_column.menus.menu_1,
-            title = "Settings Left Column",
+            title = "分类结果",
             icon_path = Functions.set_svg_icon("icon_settings.svg")
         )
         MainFunctions.set_right_column_menu(self, self.ui.right_column.menu_1)
@@ -227,7 +227,7 @@ class SetupMainWindow:
             radius = 8,
             color = self.themes['app_color']['white'],
             bg_color = self.themes['app_color']['dark_one'],
-            bg_color_hover = self.themes['app_color']['dark_three'],
+            bg_color_hover = self.themes['app_color']['orange'],
             bg_color_pressed = self.themes['app_color']['orange']
         )
         self.func_btn_11.setMaximumWidth(200)
@@ -243,7 +243,7 @@ class SetupMainWindow:
             radius = 8,
             color = self.themes['app_color']['white'],
             bg_color = self.themes['app_color']['dark_one'],
-            bg_color_hover = self.themes['app_color']['dark_three'],
+            bg_color_hover = self.themes['app_color']['orange'],
             bg_color_pressed = self.themes['app_color']['orange']
         )
         self.func_btn_12.setMaximumWidth(200)
@@ -298,7 +298,7 @@ class SetupMainWindow:
             radius = 8,
             color = self.themes['app_color']['white'],
             bg_color = self.themes['app_color']['dark_one'],
-            bg_color_hover = self.themes['app_color']['dark_three'],
+            bg_color_hover = self.themes['app_color']['orange'],
             bg_color_pressed = self.themes['app_color']['orange']
         )
         self.func_btn_21.setMaximumWidth(200)
@@ -311,7 +311,7 @@ class SetupMainWindow:
             radius = 8,
             color = self.themes['app_color']['white'],
             bg_color = self.themes['app_color']['dark_one'],
-            bg_color_hover = self.themes['app_color']['dark_three'],
+            bg_color_hover = self.themes['app_color']['orange'],
             bg_color_pressed = self.themes['app_color']['orange']
         )
         self.func_btn_22.setMaximumWidth(200)
@@ -345,7 +345,7 @@ class SetupMainWindow:
             radius = 8,
             color = self.themes['app_color']['white'],
             bg_color = self.themes['app_color']['dark_one'],
-            bg_color_hover = self.themes['app_color']['dark_three'],
+            bg_color_hover = self.themes['app_color']['orange'],
             bg_color_pressed = self.themes['app_color']['orange']
         )
         self.func_btn_31.setMaximumWidth(200)

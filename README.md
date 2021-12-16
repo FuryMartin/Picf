@@ -1,4 +1,4 @@
-# Fycipic
+# Picf
 
 ## 安装步骤:
 - 安装Anaconda（如果已有，跳过本步）

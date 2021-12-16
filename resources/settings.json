@@ -1,6 +1,6 @@
 {
     "app_name": "Picf",
-    "version": "v0.1",
+    "version": "v1.0",
     "copyright": "By: FuryMartin",
     "year": 2021,
     "theme_name": "default",
@@ -26,11 +26,11 @@
         "minimum": 0,
         "maximum": 240
     },
-    "time_animation": 0,
+    "time_animation": 200,
     "font": {
         "family": "Microsoft YaHei",
         "title_size": 11,
         "text_size": 10
     },
-    "image_path": ""
+    "image_path": "D:/Code/AI_Face/Sort-By-Face_Backup/image_backup_2"
 }

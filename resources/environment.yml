@@ -1,4 +1,4 @@
-name: Fycipic
+name: Picf
 channels:
   - conda-forge
   - defaults

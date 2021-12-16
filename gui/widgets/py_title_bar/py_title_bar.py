@@ -289,7 +289,7 @@ class PyTitleBar(QWidget):
         self.minimize_button = PyTitleButton(
             self._parent,
             self._app_parent,
-            tooltip_text = "Close app",
+            tooltip_text = "最小化窗口",
             dark_one = self._dark_one,
             bg_color = self._btn_bg_color,
             bg_color_hover = self._btn_bg_color_hover,
@@ -308,7 +308,7 @@ class PyTitleBar(QWidget):
         self.maximize_restore_button = PyTitleButton(
             self._parent,
             self._app_parent,
-            tooltip_text = "Maximize app",
+            tooltip_text = "最大化窗口",
             dark_one = self._dark_one,
             bg_color = self._btn_bg_color,
             bg_color_hover = self._btn_bg_color_hover,
@@ -327,7 +327,7 @@ class PyTitleBar(QWidget):
         self.close_button = PyTitleButton(
             self._parent,
             self._app_parent,
-            tooltip_text = "Close app",
+            tooltip_text = "关闭",
             dark_one = self._dark_one,
             bg_color = self._btn_bg_color,
             bg_color_hover = self._btn_bg_color_hover,

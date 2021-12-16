@@ -58,6 +58,7 @@ class MainFunctions():
     ):
         self.ui.left_column.menus.menus.setCurrentWidget(menu)
         self.ui.left_column.title_label.setText(title)
+        self.ui.left_column.title_label.setAlignment(Qt.AlignCenter)
         self.ui.left_column.icon.set_icon(icon_path)
 
     # RETURN IF LEFT COLUMN IS VISIBLE
@@ -162,11 +163,13 @@ class MainFunctions():
             btn = PyPushButton(
                 text=name,
                 radius = 5,
-                color = self.themes["app_color"]["text_foreground"],
+                color = self.themes["app_color"]["white"],
                 bg_color =  self.themes["app_color"]["dark_one"],
-                bg_color_hover = self.themes["app_color"]["dark_three"],
-                bg_color_pressed = self.themes["app_color"]["dark_four"]
+                bg_color_hover = self.themes['app_color']['orange'],
+                bg_color_pressed = self.themes['app_color']['orange']
             )
+            btn.setMinimumHeight(25)
+            btn.setMaximumHeight(25)
             self.btn_boxes_layout.addWidget(btn)
             btn.paths = paths
             btn.clicked.connect(lambda: MainFunctions.load_images_by_person(self))
@@ -430,7 +433,7 @@ class MainFunctions():
             radius = 8,
             color = self.themes['app_color']['white'],
             bg_color = self.themes['app_color']['dark_one'],
-            bg_color_hover = self.themes['app_color']['dark_three'],
+            bg_color_hover = self.themes['app_color']['orange'],
             bg_color_pressed = self.themes['app_color']['orange']
         )
         self.commit_delete_button.setMinimumHeight(40)
