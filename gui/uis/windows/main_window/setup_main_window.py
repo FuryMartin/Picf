@@ -24,6 +24,8 @@ from . functions_main_window import *
 import sys
 import os
 from utils.face_functions import get_duplicate_pics, get_image_folder, search_person_pics, sorter_main
+from utils.embedder import differ_paths, get_image_paths
+import utils.embedder as EMBEDDER
 
 # IMPORT QT CORE
 # ///////////////////////////////////////////////////////////////
@@ -50,6 +52,7 @@ from . ui_main import *
 from . functions_main_window import *
 
 from . flow_layout import *
+
 
 # PY WINDOW
 # ///////////////////////////////////////////////////////////////
@@ -255,8 +258,12 @@ class SetupMainWindow:
             self.ui.credits.copyright_label.setText("完成识别，耗时 {} 秒".format(self.timer_count))
             QMessageBox.information(self, "", "完成识别")
         def print_time():
+            try:
+                processed_image = EMBEDDER.global_counter.value
+            except AttributeError:
+                processed_image = 0
             self.timer_count += 1
-            self.ui.credits.copyright_label.setText("正在识别中，识别速度约为3张/秒，请稍等。  已识别 {} 秒".format(self.timer_count))
+            self.ui.credits.copyright_label.setText("正在识别中，{}/{}，已识别 {} 秒".format(processed_image, self.total_image, self.timer_count))
 
         def create_detect_worker():
             self.timer_count = 0
@@ -264,7 +271,16 @@ class SetupMainWindow:
             self.timer.timeout.connect(lambda: print_time())
             self.timer.start(1000)
 
-            self.worker_detect = Worker('Detect')
+            image_paths = get_image_paths(self.settings['image_path'])
+            image_paths = differ_paths(image_paths, self.settings['image_path'])
+            self.total_image = len(image_paths)
+            if self.total_image== 0:
+                self.ui.credits.copyright_label.setText("共有 0 张新增图片，识别取消")
+                return None
+
+            #print("Found {} images..".format(self.total_image))
+
+            self.worker_detect = Worker('Detect', image_paths)
             self.worker_detect.start()
             self.worker_detect.finished.connect(detect_finished)
 
@@ -408,7 +424,7 @@ class Worker(QThread):
 
     def run(self):
         if self.mode == "Detect":
-            sorter_main(get_image_folder())
+            sorter_main(self.path)
             self.finished.emit({})
         elif self.mode == "Search":
             result = search_person_pics(self.path)

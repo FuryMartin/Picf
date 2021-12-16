@@ -1,7 +1,10 @@
+import builtins
+from functools import partial
 import sys
 import pickle
 import shutil
 import argparse
+from threading import Lock
 import cv2
 import numpy as np
 import os
@@ -24,13 +27,14 @@ tf.get_logger().setLevel(logging.ERROR)
 import warnings
 warnings.filterwarnings("ignore")
 
-from multiprocessing import Pool, cpu_count
+from multiprocessing import Pool, cpu_count, Value, Manager
 from math import ceil
 from utils.facenet import compute_embedding
 from tensorflow.keras.models import load_model
 from tqdm import tqdm
 from utils.display_by_person import load_json,get_persons,write_json
-
+global global_counter
+global_counter = 0
 
 def differ_paths(paths, root_dir):
     #从paths中剔除已存在于output.json中的图片并返回
@@ -63,7 +67,7 @@ def get_image_paths(root_dir):
 
     return paths
 
-def save_embeddings(process_data):
+def save_embeddings(process_data, global_counter, lock):
     """Function used by each processing pool to compute embeddings for part of a dataset.
     The embeddings are saved into a temporary folder
 
@@ -71,7 +75,6 @@ def save_embeddings(process_data):
         process_data : dictionary consisting of data to be used by the pool 
     """
     # load the model for each process
-
     
     model = load_model("Models/facenet.h5")
     model_detector = load_model("Models/RFB.h5",compile=False)
@@ -81,8 +84,11 @@ def save_embeddings(process_data):
     output = []
     for count, path in enumerate(process_data['image_paths']):
         #调用facenet.py中的compute_embedding()方法，返回特征值
-        embeddings = compute_embedding(path,model,model_detector) 
-
+        embeddings = compute_embedding(path,model,model_detector)
+        lock.acquire()
+        global_counter.value += 1
+        lock.release()
+        print("Embeddings:{}".format(global_counter.value))
         # in case no faces are detected
         if embeddings is None:
             continue
@@ -104,9 +110,10 @@ def save_embeddings(process_data):
         pickle.dump(output, f)
     
 
-def embedder(source):
+def embedder(image_paths):
     #t1 = time.time()
-    args = {'source':source,'processes':12}
+    args = {'processes':2}
+
     '''
     parser = argparse.ArgumentParser()
 
@@ -119,15 +126,6 @@ def embedder(source):
 
     args = vars(parser.parse_args())
     '''
-
-    image_paths = get_image_paths(args['source'])
-    image_paths = differ_paths(image_paths, args['source'])
-
-    if len(image_paths) == 0:
-        print("Found 0 new images.")
-        return None
-
-    print("Found {} images..".format(len(image_paths)))
 
     # Define the number of processes to be used by the pool
     # Each process takes one core in the CPU
@@ -170,11 +168,19 @@ def embedder(source):
 
     #print(time.time()-t1)
     # Create a pool which can execute more than one process paralelly
+    manager = Manager()
+    global global_counter
+    global_counter = manager.Value('d', 0)
+    LOCK = manager.Lock()
+    #print(global_counter.value)
+
     pool = Pool(processes=processes)
     # Map the function
     print("Started {} processes..".format(processes))
 
-    pool.map(save_embeddings, split_data)
+    partial_embeddings = partial(save_embeddings, global_counter = global_counter, lock = LOCK)
+    #pool.map(save_embeddings, (split_data, global_counter))
+    pool.map(partial_embeddings, split_data)
 
     # Wait until all parallel processes are done and then execute main script
     pool.close()

@@ -41,6 +41,9 @@ from gui.widgets import *
 
 import time
 
+import builtins
+builtins.global_counter = 0
+
 # ADJUST QT FONT DPI FOR HIGHT SCALE AN 4K MONITOR
 # ///////////////////////////////////////////////////////////////
 os.environ["QT_FONT_DPI"] = "96"

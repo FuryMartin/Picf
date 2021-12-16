@@ -13,9 +13,9 @@ from utils.CW import draw_graph, chinese_whispers
 from utils.sort_images import image_sorter
 from imagededup.methods import PHash
 
-def sorter_main(path):
+def sorter_main(image_paths):
     t0 = time.time()
-    if embedder(path):
+    if embedder(image_paths):
         sort_images()
         print(time.time()-t0)
         #persons = get_persons('output.json')
