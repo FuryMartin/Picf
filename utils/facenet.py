@@ -1,9 +1,6 @@
-import imutils
 import dlib
-import os
 import cv2
 import numpy as np
-import tensorflow as tf
 from imutils.face_utils import FaceAligner
 
 

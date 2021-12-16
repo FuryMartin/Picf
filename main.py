@@ -17,7 +17,6 @@
 
 # IMPORT PACKAGES AND MODULES
 # ///////////////////////////////////////////////////////////////
-from gui.uis.windows.main_window import flow_layout
 from gui.uis.windows.main_window.functions_main_window import *
 import sys
 import os
@@ -39,10 +38,6 @@ from gui.uis.windows.main_window import *
 # ///////////////////////////////////////////////////////////////
 from gui.widgets import *
 
-import time
-
-import builtins
-builtins.global_counter = 0
 
 # ADJUST QT FONT DPI FOR HIGHT SCALE AN 4K MONITOR
 # ///////////////////////////////////////////////////////////////

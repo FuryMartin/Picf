@@ -18,12 +18,9 @@
 # ///////////////////////////////////////////////////////////////
 import time
 
-from gui.uis.windows import main_window
-from gui.widgets.py_table_widget.py_table_widget import PyTableWidget
+
 from . functions_main_window import *
-import sys
-import os
-from utils.face_functions import get_duplicate_pics, get_image_folder, search_person_pics, sorter_main
+from utils.face_functions import get_duplicate_pics, search_person_pics, sorter_main
 from utils.embedder import differ_paths, get_image_paths
 import utils.embedder as EMBEDDER
 

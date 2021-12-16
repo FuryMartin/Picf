@@ -1,9 +1,5 @@
-import pickle
 import numpy as np
 import networkx as nx
-import os
-import shutil
-import argparse
 from tqdm import tqdm
 
 def get_similarity(embeddings,current_face_emb):

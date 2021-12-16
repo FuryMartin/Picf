@@ -1,15 +1,10 @@
-import builtins
 from functools import partial
 import sys
 import pickle
 import shutil
-import argparse
-from threading import Lock
 import cv2
-import numpy as np
 import os
 import logging
-import time
 #------------------------------------------------------------------------------------------------
 # 旧检测模型 TEST : 161 images , Time Consume : 95.4s , 2021.11.26 2:05   每秒1.69张
 #------------------------------------------------------------------------------------------------
@@ -27,11 +22,10 @@ tf.get_logger().setLevel(logging.ERROR)
 import warnings
 warnings.filterwarnings("ignore")
 
-from multiprocessing import Pool, cpu_count, Value, Manager
+from multiprocessing import Pool, cpu_count, Manager
 from math import ceil
 from utils.facenet import compute_embedding
 from tensorflow.keras.models import load_model
-from tqdm import tqdm
 from utils.display_by_person import load_json,get_persons,write_json
 global global_counter
 global_counter = 0
