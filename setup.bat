@@ -2,7 +2,7 @@
 cd /d %~dp0
 cd /d %~dp0\resources
 call conda env create -f environment.yml
-call conda activate Ficipic
+call conda activate Fycipic
 cd /d %~dp0\imagededup
 call python setup.py install
 rd /s /q imagededup.egg-info
