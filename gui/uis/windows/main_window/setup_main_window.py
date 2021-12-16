@@ -265,10 +265,12 @@ class SetupMainWindow:
             self.timer_count = int(time.time() - self.t0)
             if processed_image == 0:
                 self.ui.credits.copyright_label.setText("正在加载模型，已开始 {} 秒".format(self.timer_count))
-                print("正在加载模型，已开始 {} 秒".format(self.timer_count))
+                #print("正在加载模型，已开始 {} 秒".format(self.timer_count))
+            elif processed_image == self.total_image:
+                self.ui.credits.copyright_label.setText("识别完成，正在分类，已开始 {} 秒".format(self.timer_count))
             else:
-                self.ui.credits.copyright_label.setText("正在识别中，{}/{}，已识别 {} 秒".format(processed_image, self.total_image, self.timer_count))
-                print("正在识别中，{}/{}，已识别 {} 秒".format(processed_image, self.total_image, self.timer_count))
+                self.ui.credits.copyright_label.setText("正在识别中，{}/{}，已开始 {} 秒".format(processed_image, self.total_image, self.timer_count))
+                #print("正在识别中，{}/{}，已识别 {} 秒".format(processed_image, self.total_image, self.timer_count))
 
         def create_detect_worker():
             self.t0 = time.time()

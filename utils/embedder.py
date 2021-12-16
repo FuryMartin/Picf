@@ -109,30 +109,37 @@ def save_embeddings(process_data, global_counter, lock):
     with open(process_data['temp_path'], "wb") as f:
         pickle.dump(output, f)
     
+def get_best_processes(length):
+    if length < 2:
+        processes = 1
+    elif length < 6:
+        processes = 2
+    elif length < 11:
+        processes = 3
+    elif length < 17:
+        processes = 4
+    elif length < 33:
+        processes = 5
+    elif length < 41:
+        processes = 6
+    elif length < 84:
+        processes = 7
+    elif length < 146:
+        processes = 10
+    elif length < 415:
+        processes = 12
+    else:
+        processes = 15
+    return processes
+
 
 def embedder(image_paths):
     #t1 = time.time()
-    args = {'processes':8}
-
-    '''
-    parser = argparse.ArgumentParser()
-
-    parser.add_argument(
-        "-src","--source", required=True, help="Path of the root directory where images are stored")
     
-    parser.add_argument(
-        "--processes", required=False, type=int, default=cpu_count(),help="Number of cores to be used to compute embeddings"
-    )
-
-    args = vars(parser.parse_args())
-    '''
+    processes = get_best_processes(len(image_paths))
 
     # Define the number of processes to be used by the pool
     # Each process takes one core in the CPU
-    processes = args["processes"]
-    if len(image_paths) < processes *10:
-        processes = 4
-
 
     if processes > cpu_count():
         print("Number of processes greater than system capacity..")
