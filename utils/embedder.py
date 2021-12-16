@@ -85,10 +85,10 @@ def save_embeddings(process_data, global_counter, lock):
     for count, path in enumerate(process_data['image_paths']):
         #调用facenet.py中的compute_embedding()方法，返回特征值
         embeddings = compute_embedding(path,model,model_detector)
+        # 全局计数变量，用于统计进度
         lock.acquire()
         global_counter.value += 1
         lock.release()
-        print("Embeddings:{}".format(global_counter.value))
         # in case no faces are detected
         if embeddings is None:
             continue
@@ -112,7 +112,7 @@ def save_embeddings(process_data, global_counter, lock):
 
 def embedder(image_paths):
     #t1 = time.time()
-    args = {'processes':2}
+    args = {'processes':8}
 
     '''
     parser = argparse.ArgumentParser()

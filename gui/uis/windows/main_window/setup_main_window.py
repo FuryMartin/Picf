@@ -262,14 +262,20 @@ class SetupMainWindow:
                 processed_image = EMBEDDER.global_counter.value
             except AttributeError:
                 processed_image = 0
-            self.timer_count += 1
-            self.ui.credits.copyright_label.setText("正在识别中，{}/{}，已识别 {} 秒".format(processed_image, self.total_image, self.timer_count))
+            self.timer_count = int(time.time() - self.t0)
+            if processed_image == 0:
+                self.ui.credits.copyright_label.setText("正在加载模型，已开始 {} 秒".format(self.timer_count))
+                print("正在加载模型，已开始 {} 秒".format(self.timer_count))
+            else:
+                self.ui.credits.copyright_label.setText("正在识别中，{}/{}，已识别 {} 秒".format(processed_image, self.total_image, self.timer_count))
+                print("正在识别中，{}/{}，已识别 {} 秒".format(processed_image, self.total_image, self.timer_count))
 
         def create_detect_worker():
+            self.t0 = time.time()
             self.timer_count = 0
             self.timer = QTimer()
             self.timer.timeout.connect(lambda: print_time())
-            self.timer.start(1000)
+            self.timer.start(100)
 
             image_paths = get_image_paths(self.settings['image_path'])
             image_paths = differ_paths(image_paths, self.settings['image_path'])
