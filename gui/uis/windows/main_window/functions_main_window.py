@@ -340,7 +340,7 @@ class MainFunctions():
             self.search_target_lable.setObjectName(u"search_target_lable")
             self.search_target_lable.setStyleSheet(u"background: transparent;")
             self.search_target_lable.setText("所选照片")
-            self.search_target_lable.setStyleSheet(u"font-size: 14pt")
+            self.search_target_lable.setStyleSheet(u"font-family:Microsoft Yahei;font-size: 14pt")
             self.search_target_lable.setAlignment(Qt.AlignCenter)
             self.scrollArea_4_layout.addWidget(self.search_target_lable)
 
@@ -354,7 +354,7 @@ class MainFunctions():
         self.search_result_lable.setObjectName(u"search_result_lable")
         self.search_result_lable.setStyleSheet(u"background: transparent;")
         self.search_result_lable.setText("搜索结果")
-        self.search_result_lable.setStyleSheet(u"font-size: 14pt")
+        self.search_result_lable.setStyleSheet(u"font-family:Microsoft Yahei;font-size: 14pt")
         self.search_result_lable.setAlignment(Qt.AlignCenter)
         self.scrollArea_4_layout.addWidget(self.search_result_lable)
         self.scrollArea_4_layout.update()

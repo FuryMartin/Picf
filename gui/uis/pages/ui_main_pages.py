@@ -44,7 +44,7 @@ class Ui_MainPages(object):
         self.func_1_lable.setObjectName(u"func_1_lable")
         self.func_1_lable.setStyleSheet(u"background: transparent;")
         self.func_1_lable.setText("识别分类")
-        self.func_1_lable.setStyleSheet(u"font-size: 20pt")
+        self.func_1_lable.setStyleSheet(u"font-family:Microsoft Yahei;font-size: 20pt")
         self.func_1_lable.setAlignment(Qt.AlignCenter)
 
 
@@ -78,7 +78,7 @@ class Ui_MainPages(object):
         self.func_2_lable.setObjectName(u"func_2_lable")
         self.func_2_lable.setStyleSheet(u"background: transparent;")
         self.func_2_lable.setText("人脸搜索")
-        self.func_2_lable.setStyleSheet(u"font-size: 20pt")
+        self.func_2_lable.setStyleSheet(u"font-family:Microsoft Yahei;font-size: 20pt")
         self.func_2_lable.setAlignment(Qt.AlignCenter)
 
 
@@ -113,7 +113,7 @@ class Ui_MainPages(object):
         self.func_3_lable.setObjectName(u"func_3_lable")
         self.func_3_lable.setStyleSheet(u"background: transparent;")
         self.func_3_lable.setText("相似筛查")
-        self.func_3_lable.setStyleSheet(u"font-size: 20pt")
+        self.func_3_lable.setStyleSheet(u"font-family:Microsoft Yahei;font-size: 20pt")
         self.func_3_lable.setAlignment(Qt.AlignCenter)
 
 

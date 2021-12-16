@@ -28,9 +28,9 @@
     },
     "time_animation": 0,
     "font": {
-        "family": "苹方-简",
-        "title_size": 10,
-        "text_size": 9
+        "family": "Microsoft YaHei",
+        "title_size": 11,
+        "text_size": 10
     },
-    "image_path": "D:/Code/AI_Face/Sort-By-Face_Backup/image"
+    "image_path": ""
 }
