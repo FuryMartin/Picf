@@ -1,7 +1,6 @@
 # Picf
 
 ## 简介
-----
 Picf 是一款智能相册，由北航2020级电子信息工程学院的学生为完成计算机软件基础大作业而构建。
 
 Picf 主要具有三大功能，均为老师所要求的功能：
@@ -19,19 +18,16 @@ Picf 主要具有三大功能，均为老师所要求的功能：
 - #### **美观的图形化界面**
     借助于开源项目，Picf 拥有相对美观、现代的GUI界面，使得分类、搜索、筛查的结果呈现更加直观。
 ## 安装步骤:
----
 - ### 安装 Anaconda（如果已有，跳过本步）
 - ### 下载最新的 Release
 - ### 运行`setup.bat`。
     `setup.bat` 主要用于自动创建 conda 环境、安装依赖包、完成`imagededup`包的编译。
 ## 使用方法：
----
 ```
 conda activate Picf
 python main.py
 ```
 ## 原理
----
 
 ### 一、 人脸识别分类
 输入一组图片，对于其中的每张图片进行以下步骤：
@@ -57,7 +53,6 @@ python main.py
 - 使用 `BKTree` 按 `Hamming distance` 的大小对照片进行分组，输出分组结果。
 
 ## 致谢
----
 在构建Picf的过程中，我们参考并使用了以下开源仓库的代码：
 
 - ### [yashyenugu/Sort-By-Face](https://github.com/yashyenugu/Sort-By-Face)
