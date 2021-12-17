@@ -23,6 +23,7 @@ from typing import Set
 from . functions_main_window import *
 from utils.face_functions import get_duplicate_pics, search_person_pics, sorter_main
 from utils.embedder import differ_paths, get_image_paths
+from tensorflow.keras.models import load_model
 import utils.embedder as EMBEDDER
 
 # IMPORT QT CORE
@@ -275,7 +276,6 @@ class SetupMainWindow:
                 QMessageBox.information(self, "ERROR", "还未选择图片文件夹，请先选择文件夹后再开始识别")
                 return None
 
-
             self.t0 = time.time()
             self.timer_count = 0
             self.timer = QTimer()
@@ -332,9 +332,12 @@ class SetupMainWindow:
             self.search_changed = True
             self.has_searched = True
             self.ui.credits.copyright_label.setText("正在进行人脸搜索，请稍等")
-            self.worker_search = Worker('Search', path)
-            self.worker_search.start()
-            self.worker_search.finished.connect(get_person_search_result)
+            try:
+                self.worker_search.start()
+            except AttributeError:
+                self.worker_search = Worker('Search', path)
+                self.worker_search.start()
+                self.worker_search.finished.connect(get_person_search_result)
         def call_create_search_worker():
             try:
                 create_search_worker(self.selected_image)
@@ -438,7 +441,12 @@ class Worker(QThread):
             sorter_main(self.path)
             self.finished.emit({})
         elif self.mode == "Search":
-            result = search_person_pics(self.path)
+            try:
+                self.model
+            except AttributeError:
+                self.model = load_model("Models/facenet.h5")
+                self.model_detector = load_model("Models/RFB.h5",compile=False)
+            result = search_person_pics(self.path, self.model, self.model_detector)
             self.finished.emit(result)
         elif self.mode == "Duplicate":
             result = get_duplicate_pics(self.path)

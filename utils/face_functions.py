@@ -7,7 +7,6 @@ import os
 import shutil
 import sys
 from utils.display_by_person import *
-from tensorflow.keras.models import load_model
 from utils.facenet import compute_embedding
 from utils.CW import draw_graph, chinese_whispers
 from utils.sort_images import image_sorter
@@ -43,12 +42,10 @@ def get_image_folder():
 
 ######################################################################
 # 人脸搜索接口
-def search_person_pics(path):
+def search_person_pics(path, model, model_detector):
     args = {'threshold': 0.67, 'iterations': 30}
 
     data = load_pickle('embeddings.pickle')
-    model = load_model("Models/facenet.h5")
-    model_detector = load_model("Models/RFB.h5",compile=False)
     user_embedding = compute_embedding(path, model, model_detector)
 
     if user_embedding is None:
