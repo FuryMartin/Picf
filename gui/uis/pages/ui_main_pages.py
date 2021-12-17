@@ -157,12 +157,12 @@ class Ui_MainPages(object):
 "}")
         self.page_3_layout = QVBoxLayout(self.page_3)
         self.page_3_layout.setObjectName(u"page_3_layout")
-        self.scrollArea = QScrollArea(self.page_3)
-        self.scrollArea.setObjectName(u"scrollArea")
-        self.scrollArea.setStyleSheet(u"background: transparent;")
-        self.scrollArea.setFrameShape(QFrame.NoFrame)
-        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea_1= QScrollArea(self.page_3)
+        self.scrollArea_1.setObjectName(u"scrollArea")
+        self.scrollArea_1.setStyleSheet(u"background: transparent;")
+        self.scrollArea_1.setFrameShape(QFrame.NoFrame)
+        self.scrollArea_1.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.scrollArea_1.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
         self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 100, 30))
@@ -171,9 +171,9 @@ class Ui_MainPages(object):
         self.gridLayout_2.setSpacing(0)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.scrollArea_1.setWidget(self.scrollAreaWidgetContents)
 
-        self.page_3_layout.addWidget(self.scrollArea)
+        self.page_3_layout.addWidget(self.scrollArea_1)
 
         self.pages.addWidget(self.page_3)
         ############################################################################
@@ -184,14 +184,14 @@ class Ui_MainPages(object):
 "}")
         self.page_4_layout = QVBoxLayout(self.page_4)
         self.page_4_layout.setObjectName(u"page_4_layout")
-        self.scrollArea_4 = QScrollArea(self.page_4)
-        self.scrollArea_4.setObjectName(u"scrollArea_4")
-        self.scrollArea_4.setStyleSheet(u"background: transparent;")
-        self.scrollArea_4.setFrameShape(QFrame.NoFrame)
-        self.scrollArea_4.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.scrollArea_4.setWidgetResizable(True)
+        self.scrollArea_2 = QScrollArea(self.page_4)
+        self.scrollArea_2.setObjectName(u"scrollArea_2")
+        self.scrollArea_2.setStyleSheet(u"background: transparent;")
+        self.scrollArea_2.setFrameShape(QFrame.NoFrame)
+        self.scrollArea_2.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.scrollArea_2.setWidgetResizable(True)
 
-        self.page_4_layout.addWidget(self.scrollArea_4)
+        self.page_4_layout.addWidget(self.scrollArea_2)
 
         self.pages.addWidget(self.page_4)
         #############################################################################
@@ -202,20 +202,19 @@ class Ui_MainPages(object):
 "}")
         self.page_5_layout = QVBoxLayout(self.page_5)
         self.page_5_layout.setObjectName(u"page_5_layout")
-        self.scrollArea_5 = QScrollArea(self.page_5)
-        self.scrollArea_5.setObjectName(u"scrollArea_5")
-        self.scrollArea_5.setStyleSheet(u"background: transparent;")
-        self.scrollArea_5.setFrameShape(QFrame.NoFrame)
-        self.scrollArea_5.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.scrollArea_5.setWidgetResizable(True)
+        self.scrollArea_3 = QScrollArea(self.page_5)
+        self.scrollArea_3.setObjectName(u"scrollArea_3")
+        self.scrollArea_3.setStyleSheet(u"background: transparent;")
+        self.scrollArea_3.setFrameShape(QFrame.NoFrame)
+        self.scrollArea_3.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.scrollArea_3.setWidgetResizable(True)
 
-        self.page_5_layout.addWidget(self.scrollArea_5)
+        self.page_5_layout.addWidget(self.scrollArea_3)
 
         self.pages.addWidget(self.page_5)
         #############################################################################
 
         self.main_pages_layout.addWidget(self.pages)
-
 
         self.retranslateUi(MainPages)
 

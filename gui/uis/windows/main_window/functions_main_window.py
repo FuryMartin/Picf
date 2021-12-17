@@ -222,7 +222,7 @@ class MainFunctions():
             QApplication.processEvents()
         #self.image_dic[name].setParent(self.ui.load_pages.gridLayout_2)
         self.ui.load_pages.gridLayout_2.addWidget(self.image_dic[name])
-        self.ui.load_pages.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        #self.ui.load_pages.scrollArea_1.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
 
     def load_images(self, paths, image_page):
         for count, path in enumerate(paths):
@@ -299,27 +299,36 @@ class MainFunctions():
             self.ui.credits.image.setText("")
             self.ui.credits.image_title.setText("")
             return None
+        else:
+            name, paths = tuple(self.person_search_result.items())[0]
+            self.ui.credits.copyright_label.setText("总数量：{}".format(len(paths)))
+            self.ui.credits.person.setText("人物名：")
+            self.ui.credits.person_name.setText(name)
+            self.ui.credits.person_name.setFocusPolicy(Qt.NoFocus)
+            self.ui.credits.person_name.setReadOnly(True)
+            self.ui.credits.image.setText("图片名：")
+            self.ui.credits.image_title.setText("")
         
         if not self.search_changed:
             return None
 
         self.search_changed = False
         try:
-            self.scrollArea_4_WidgetContents.setParent(None)
-            #self.ui.load_pages.scrollArea_4.removeWidget(self.scrollArea_4_WidgetContents)
+            self.scrollArea_2_WidgetContents.setParent(None)
+            self.ui.load_pages.scrollArea_2.removeWidget(self.scrollArea_2_WidgetContents)
         except AttributeError:
             pass
 
-        self.scrollArea_4_WidgetContents = QWidget()
-        self.scrollArea_4_WidgetContents.setObjectName(u"scrollArea_4_WidgetContents")
-        self.scrollArea_4_WidgetContents.setGeometry(QRect(0, 0, 100, 30))
-        self.scrollArea_4_WidgetContents.setStyleSheet(u"background: transparent;")
-        self.scrollArea_4_layout = QVBoxLayout(self.scrollArea_4_WidgetContents)
-        self.scrollArea_4_layout.setSpacing(0)
-        self.scrollArea_4_layout.setObjectName(u"verticalLayout")
-        self.scrollArea_4_layout.setContentsMargins(0, 0, 0, 0)
-        self.ui.load_pages.scrollArea_4.setWidget(self.scrollArea_4_WidgetContents)
-        #self.scrollArea_4_layout.addStretch(50)
+        self.scrollArea_2_WidgetContents = QWidget()
+        self.scrollArea_2_WidgetContents.setObjectName(u"scrollArea_2_WidgetContents")
+        self.scrollArea_2_WidgetContents.setGeometry(QRect(0, 0, 100, 30))
+        self.scrollArea_2_WidgetContents.setStyleSheet(u"background: transparent;")
+        self.scrollArea_2_layout = QVBoxLayout(self.scrollArea_2_WidgetContents)
+        self.scrollArea_2_layout.setSpacing(0)
+        self.scrollArea_2_layout.setObjectName(u"verticalLayout")
+        self.scrollArea_2_layout.setContentsMargins(0, 0, 0, 0)
+        self.ui.load_pages.scrollArea_2.setWidget(self.scrollArea_2_WidgetContents)
+        #self.scrollArea_2_layout.addStretch(50)
 
         self.ui.credits.copyright_label.setText("正在加载图片")
         self.ui.credits.person.setText("")
@@ -345,9 +354,9 @@ class MainFunctions():
             self.search_target_lable.setText("所选照片")
             self.search_target_lable.setStyleSheet(u"font-family:Microsoft Yahei;font-size: 14pt")
             self.search_target_lable.setAlignment(Qt.AlignCenter)
-            self.scrollArea_4_layout.addWidget(self.search_target_lable)
+            self.scrollArea_2_layout.addWidget(self.search_target_lable)
 
-            self.scrollArea_4_layout.addWidget(self.target_image_box)
+            self.scrollArea_2_layout.addWidget(self.target_image_box)
         except AttributeError:
 
             #print("还未选择图片")
@@ -359,18 +368,15 @@ class MainFunctions():
         self.search_result_lable.setText("搜索结果")
         self.search_result_lable.setStyleSheet(u"font-family:Microsoft Yahei;font-size: 14pt")
         self.search_result_lable.setAlignment(Qt.AlignCenter)
-        self.scrollArea_4_layout.addWidget(self.search_result_lable)
-        self.scrollArea_4_layout.update()
-        self.scrollArea_4_WidgetContents.update()
-        self.ui.load_pages.scrollArea_4.update()
+        self.scrollArea_2_layout.addWidget(self.search_result_lable)
+        self.scrollArea_2_layout.update()
+        self.scrollArea_2_WidgetContents.update()
+        self.ui.load_pages.scrollArea_2.update()
 
 
         #print(self.person_search_result)
         image_page = PyImagePage()
-
-
         for name, paths in self.person_search_result.items():
-
             for path in paths:
                 path = os.path.normpath(os.path.join(self.settings['image_path'], path))
                 image_box = PyImage(path)
@@ -379,7 +385,7 @@ class MainFunctions():
                 image_page.flow_layout.addWidget(image_box)
                 image_page.button_box.addButton(image_box.checkbox)
                 image_page.flow_layout.update()
-                self.scrollArea_4_layout.update()
+                self.scrollArea_2_layout.update()
                 #QApplication.processEvents()
             self.ui.credits.copyright_label.setText("总数量：{}".format(len(paths)))
             self.ui.credits.person.setText("人物名：")
@@ -389,10 +395,9 @@ class MainFunctions():
             self.ui.credits.image.setText("图片名：")
             self.ui.credits.image_title.setText("")
 
-
-        self.scrollArea_4_layout.addWidget(image_page)
-        self.scrollArea_4_layout.addStretch()
-        self.scrollArea_4_layout.setSpacing(20)
+        self.scrollArea_2_layout.addWidget(image_page)
+        self.scrollArea_2_layout.addStretch()
+        self.scrollArea_2_layout.setSpacing(20)
 
     def load_duplicate_result(self):
         ########################################################################
@@ -443,22 +448,22 @@ class MainFunctions():
         #########################################################################
         # ADD Pics
         #########################################################################
-        self.scrollArea_5_WidgetContents = QWidget()
-        self.scrollArea_5_WidgetContents.setObjectName(u"scrollArea_5_WidgetContents")
-        self.scrollArea_5_WidgetContents.setGeometry(QRect(0, 0, 100, 30))
-        self.scrollArea_5_WidgetContents.setStyleSheet(u"background: transparent;")
-        self.ui.load_pages.scrollArea_5.setWidget(self.scrollArea_5_WidgetContents)
-        self.scrollArea_5_layout = QVBoxLayout(self.scrollArea_5_WidgetContents)
-        self.scrollArea_5_layout.setSpacing(0)
-        self.scrollArea_5_layout.setObjectName(u"verticalLayout")
-        self.scrollArea_5_layout.setContentsMargins(0, 0, 0, 0)
-        self.scrollArea_5_layout.setSpacing(20)
+        self.scrollArea_3_WidgetContents = QWidget()
+        self.scrollArea_3_WidgetContents.setObjectName(u"scrollArea_3_WidgetContents")
+        self.scrollArea_3_WidgetContents.setGeometry(QRect(0, 0, 100, 30))
+        self.scrollArea_3_WidgetContents.setStyleSheet(u"background: transparent;")
+        self.ui.load_pages.scrollArea_3.setWidget(self.scrollArea_3_WidgetContents)
+        self.scrollArea_3_layout = QVBoxLayout(self.scrollArea_3_WidgetContents)
+        self.scrollArea_3_layout.setSpacing(0)
+        self.scrollArea_3_layout.setObjectName(u"verticalLayout")
+        self.scrollArea_3_layout.setContentsMargins(0, 0, 0, 0)
+        self.scrollArea_3_layout.setSpacing(20)
 
         try:
             for paths in self.person_duplicate_result:
                 image_page = PyImagePage()
                 image_page.button_box.setExclusive(False)
-                self.scrollArea_5_layout.addWidget(image_page)
+                self.scrollArea_3_layout.addWidget(image_page)
                 for path in paths:
                     path = os.path.normpath(os.path.join(self.settings['image_path'], path))
                     image_box = PyImage(path)
@@ -466,7 +471,7 @@ class MainFunctions():
                     image_page.flow_layout.addWidget(image_box)
                     image_page.button_box.addButton(image_box.checkbox)
                     image_page.flow_layout.update()
-                    self.scrollArea_5_layout.update()
+                    self.scrollArea_3_layout.update()
                 self.image_pages.append(image_page)
             QApplication.processEvents()
             """
@@ -500,10 +505,10 @@ class MainFunctions():
                 image_page.flow_layout.removeWidget(checked_widget)
                 image_page.flow_layout.update()
                 QApplication.processEvents()
-            # 如果image_page中的图片为零，从scrollArea_5_layout中移除image_page
+            # 如果image_page中的图片为零，从scrollArea_3_layout中移除image_page
             if image_page.flow_layout.count() == 0:
                 image_page.setParent(None)
-                self.scrollArea_5_layout.removeWidget(image_page)
+                self.scrollArea_3_layout.removeWidget(image_page)
                 image_page_to_delete.append(image_page)
                 QApplication.processEvents()
         for image_page in image_page_to_delete:
