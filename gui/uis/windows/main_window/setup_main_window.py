@@ -17,6 +17,7 @@
 # IMPORT PACKAGES AND MODULES
 # ///////////////////////////////////////////////////////////////
 import time
+from typing import Set
 
 
 from . functions_main_window import *
@@ -270,6 +271,11 @@ class SetupMainWindow:
                 #print("正在识别中，{}/{}，已识别 {} 秒".format(processed_image, self.total_image, self.timer_count))
 
         def create_detect_worker():
+            if self.settings['image_path'] == '':
+                QMessageBox.information(self, "ERROR", "还未选择图片文件夹，请先选择文件夹后再开始识别")
+                return None
+
+
             self.t0 = time.time()
             self.timer_count = 0
             self.timer = QTimer()

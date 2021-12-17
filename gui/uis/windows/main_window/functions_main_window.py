@@ -226,7 +226,7 @@ class MainFunctions():
 
     def load_images(self, paths, image_page):
         for count, path in enumerate(paths):
-            path = os.path.normpath(os.path.join(self.ui.settings['image_path'], path))
+            path = os.path.normpath(os.path.join(self.settings['image_path'], path))
             image_box = PyImage(path)
             #image_page.button_box.setAutoExclusive(False)
             image_box.checkbox.stateChanged.connect(lambda: MainFunctions.get_checked_button(self, image_page))
@@ -372,7 +372,7 @@ class MainFunctions():
         for name, paths in self.person_search_result.items():
 
             for path in paths:
-                path = os.path.normpath(os.path.join(self.ui.settings['image_path'], path))
+                path = os.path.normpath(os.path.join(self.settings['image_path'], path))
                 image_box = PyImage(path)
                 image_box.checkbox.stateChanged.connect(lambda: MainFunctions.get_checked_button(self, image_page))
                 image_page.flow_layout_boxs.append(image_box)
@@ -460,7 +460,7 @@ class MainFunctions():
                 image_page.button_box.setExclusive(False)
                 self.scrollArea_5_layout.addWidget(image_page)
                 for path in paths:
-                    path = os.path.normpath(os.path.join(self.ui.settings['image_path'], path))
+                    path = os.path.normpath(os.path.join(self.settings['image_path'], path))
                     image_box = PyImage(path)
                     image_page.flow_layout_boxs.append(image_box)
                     image_page.flow_layout.addWidget(image_box)
