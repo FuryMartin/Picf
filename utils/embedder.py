@@ -17,8 +17,6 @@ import logging
 # Prevent tensorflow from logging in multiple processes simultaneously
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 os.environ['CUDA_VISIBLE_DEVICES'] = "-1"
-import tensorflow as tf
-tf.get_logger().setLevel(logging.ERROR)
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -70,7 +68,7 @@ def save_embeddings(process_data, global_counter, lock):
     """
     # load the model for each process
     
-    model = load_model("Models/facenet.h5")
+    model = load_model("Models/facenet.h5",compile=False)
     model_detector = load_model("Models/RFB.h5",compile=False)
     # progress bar to track 
     #bar = tqdm(total=len(process_data['image_paths']),#position=process_data['process_id']) #进度条

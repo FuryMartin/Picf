@@ -94,8 +94,8 @@ class SetupMainWindow:
         {
             "btn_icon": "icon_signal.svg",
             "btn_id": "btn_page_duplicate",
-            "btn_text": "分类结果",
-            "btn_tooltip": "分类结果",
+            "btn_text": "筛查结果",
+            "btn_tooltip": "筛查结果",
             "show_top": True,
             "is_active": False
         },
