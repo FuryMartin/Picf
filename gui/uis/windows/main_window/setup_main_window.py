@@ -255,8 +255,8 @@ class SetupMainWindow:
         def detect_finished():
             self.timer.stop()
             self.ui.credits.copyright_label.setText("完成识别，耗时 {} 秒".format(self.timer_count))
-            QMessageBox.information(self, "", "完成识别")
-        def print_time():
+            QMessageBox.information(self, "Picf", "完成识别")
+        def detect_print_time():
             try:
                 processed_image = EMBEDDER.global_counter.value
             except AttributeError:
@@ -273,13 +273,13 @@ class SetupMainWindow:
 
         def create_detect_worker():
             if self.settings['image_path'] == '':
-                QMessageBox.information(self, "ERROR", "还未选择图片文件夹，请先选择文件夹后再开始识别")
+                QMessageBox.information(self, "Picf", "还未选择图片文件夹，请先选择文件夹后再开始识别")
                 return None
 
             self.t0 = time.time()
             self.timer_count = 0
             self.timer = QTimer()
-            self.timer.timeout.connect(lambda: print_time())
+            self.timer.timeout.connect(lambda: detect_print_time())
             self.timer.start(100)
 
             image_paths = get_image_paths(self.settings['image_path'])
@@ -324,25 +324,38 @@ class SetupMainWindow:
         self.func_btn_22.setMinimumWidth(200)
         self.func_btn_22.setMinimumHeight(40)
 
-        def get_person_search_result(path):
+        def search_finished(path):
+            self.timer.stop()
             self.person_search_result = path
-            self.ui.credits.copyright_label.setText("搜索完成")
-            QMessageBox.information(self, "", "搜索完成")
+            self.ui.credits.copyright_label.setText("搜索完成，耗时 {} 秒".format(self.timer_count))
+            QMessageBox.information(self, "Picf", "搜索完成")
+
+        def search_print_time():
+            self.timer_count = int(time.time() - self.t0)
+            self.ui.credits.copyright_label.setText("正在搜索中，已开始 {} 秒".format(self.timer_count))
+
         def create_search_worker(path):
+
+            self.t0 = time.time()
+            self.timer_count = 0
+            self.timer = QTimer()
+            self.timer.timeout.connect(lambda: search_print_time())
+            self.timer.start(100)
+            
             self.search_changed = True
             self.has_searched = True
-            self.ui.credits.copyright_label.setText("正在进行人脸搜索，请稍等")
+            #self.ui.credits.copyright_label.setText("正在进行人脸搜索，请稍等")
             try:
                 self.worker_search.start()
             except AttributeError:
                 self.worker_search = Worker('Search', path)
                 self.worker_search.start()
-                self.worker_search.finished.connect(get_person_search_result)
+                self.worker_search.finished.connect(search_finished)
         def call_create_search_worker():
             try:
                 create_search_worker(self.selected_image)
             except AttributeError:
-                QMessageBox.information(self, "", "还未选择照片，请先选择照片后再开始搜索")
+                QMessageBox.information(self, "Picf", "还未选择照片，请先选择照片后再开始搜索")
         self.search_changed = False
         self.has_searched = False
         self.func_btn_22.clicked.connect(lambda: call_create_search_worker())
@@ -366,17 +379,32 @@ class SetupMainWindow:
         self.func_btn_32.setMaximumWidth(200)
         self.func_btn_32.setMinimumWidth(200)
         self.func_btn_32.setMinimumHeight(40)
-        def get_person_duplicate_result(path):
+        def dedup_finished(path):
+            self.timer.stop()
+            self.ui.credits.copyright_label.setText("筛查完成，耗时 {} 秒".format(self.timer_count))
+
             self.person_duplicate_result = path
             self.image_pages = []
-            self.ui.credits.copyright_label.setText("完成筛查")
-            QMessageBox.information(self, "", "完成筛查")
+            QMessageBox.information(self, "Picf", "完成筛查")
+
+        def dedup_print_time():
+            self.timer_count = int(time.time() - self.t0)
+            self.ui.credits.copyright_label.setText("正在筛查中，已开始 {} 秒".format(self.timer_count))
+            
         def create_duplicate_worker(path):
+
+            self.t0 = time.time()
+            self.timer_count = 0
+            self.timer = QTimer()
+            self.timer.timeout.connect(lambda: dedup_print_time())
+            self.timer.start(100)
+
             self.found_duplicate_image = True
-            self.ui.credits.copyright_label.setText("正在进行相似图片筛查，请稍等")
+            #self.ui.credits.copyright_label.setText("正在进行相似图片筛查，请稍等")
             self.worker_duplicate = Worker('Duplicate', path)
             self.worker_duplicate.start()
-            self.worker_duplicate.finished.connect(get_person_duplicate_result)
+            self.worker_duplicate.finished.connect(dedup_finished)
+
         self.func_btn_31.clicked.connect(lambda: create_duplicate_worker(self.settings['image_path']))
         self.found_duplicate_image = False
         ###################################################################
