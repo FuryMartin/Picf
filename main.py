@@ -20,6 +20,7 @@
 from gui.uis.windows.main_window.functions_main_window import *
 import sys
 import os
+import time
 
 # IMPORT QT CORE
 # ///////////////////////////////////////////////////////////////
@@ -92,6 +93,11 @@ class MainWindow(QMainWindow):
         # OPEN PAGE pics
         if btn.objectName() == 'btn_page_pics':
             self.ui.left_menu.select_only_one(btn.objectName())
+            try:
+                self.ui.load_pages.gridLayout_2.itemAt(0).widget().setParent(None)
+                self.ui.load_pages.gridLayout_2.removeWidget(self.ui.load_pages.gridLayout_2.itemAt(0).widget())
+            except AttributeError:
+                pass
             if not MainFunctions.left_column_is_visible(self):
                 MainFunctions.toggle_left_column(self)
             MainFunctions.set_page(self, self.ui.load_pages.page_3)
