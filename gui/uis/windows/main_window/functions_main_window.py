@@ -154,6 +154,12 @@ class MainFunctions():
 
     def load_persons(self):
         self.persons = get_persons_more(get_persons('output.json'))
+
+        #保证未命名分类始终位于底部
+        if '未命名' in self.persons:
+            unnamed = self.persons.pop('未命名')
+            self.persons['未命名'] = unnamed
+        
         self.temp_widget = QWidget()
         self.person_group = QButtonGroup()
         self.btn_boxes_layout = QVBoxLayout(self.temp_widget)

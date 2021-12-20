@@ -4,6 +4,7 @@ import networkx as nx
 import os
 import sys
 import json
+import re
 
 from utils.CW import draw_graph,chinese_whispers
 from utils.display_by_person import get_persons, load_json
@@ -110,7 +111,7 @@ def sort_images():
 
     # Sort the images using the clusters
     images = image_sorter(graph)
-    images = sorted(images, key=lambda x: x["pic_name"])
+    images.sort(key=lambda x: [int(s) if s.isdigit() else s for s in re.findall(r'\D+|\d+', x['person'])])
     with open('output.json','w',encoding='utf-8') as f:
         f.write(json.dumps(images,indent=4,ensure_ascii=False, sort_keys=True))
 

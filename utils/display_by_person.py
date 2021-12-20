@@ -1,6 +1,7 @@
 import json
 import pickle
 import os
+import re
 
 def load_json(jsonfile):
     #输入json文件名，返回[{"person":name,"pic_name":path}]形式的列表
@@ -36,7 +37,7 @@ def get_persons_more(persons):
     for person in person_to_delete:
         persons.pop(person)
     return persons
-
+    
 def write_json(persons):
     #输入{name:[paths]}形式的字典，以[{"person":name,"pic_name":path}]的形式写入output.json中
     images = []
@@ -47,7 +48,7 @@ def write_json(persons):
             #print(image_dic['pic_name'])
             image_dic['person'] = name
             images.append(image_dic)
-    images = sorted(images, key=lambda x: x["person"])
+    images.sort(key=lambda x: [int(s) if s.isdigit() else s for s in re.findall(r'\D+|\d+', x['person'])])
     with open('output.json','w',encoding='utf-8') as f:
         f.write(json.dumps(images,indent=4,ensure_ascii=False,sort_keys=True))
 
