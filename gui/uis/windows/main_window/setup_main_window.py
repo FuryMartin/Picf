@@ -94,20 +94,11 @@ class SetupMainWindow:
         {
             "btn_icon": "icon_signal.svg",
             "btn_id": "btn_page_duplicate",
-            "btn_text": "筛查结果",
-            "btn_tooltip": "筛查结果",
+            "btn_text": "筛重结果",
+            "btn_tooltip": "筛重结果",
             "show_top": True,
             "is_active": False
-        },
-        {
-            "btn_icon": "icon_settings.svg",
-            "btn_id": "btn_settings",
-            "btn_text": "打开设置",
-            "btn_tooltip": "打开设置",
-            "show_top": False,
-            "is_active": False
         }
-
     ]
 
      # ADD TITLE BAR MENUS
@@ -241,7 +232,7 @@ class SetupMainWindow:
         #################################################################
         # 识别分类
         self.func_btn_12 = PyPushButton(
-            text = '开始识别',
+            text = '开始分类',
             radius = 8,
             color = self.themes['app_color']['white'],
             bg_color = self.themes['app_color']['dark_one'],
@@ -363,7 +354,7 @@ class SetupMainWindow:
         ###################################################################
 
         self.func_btn_31 = PyPushButton(
-            text = '开始筛查',
+            text = '开始筛重',
             radius = 8,
             color = self.themes['app_color']['white'],
             bg_color = self.themes['app_color']['dark_one'],
