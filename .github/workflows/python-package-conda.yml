@@ -1,0 +1,43 @@
+name: Python Package using Conda
+
+on: [push, workflow_dispatch]
+
+jobs:
+  example-2-win:
+    name: build Windows
+    runs-on: "windows-latest"
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: Picf
+          environment-file: ./resources/environment.yml
+          python-version: 3.8.5
+          auto-activate-base: false
+  
+      - name: Build Environment
+        shell: cmd
+        run: conda activate Picf & setup.bat
+
+      - name: Packaging 
+        shell: cmd
+        run: conda activate Picf & pyinstaller main.spec
+
+      - name: Tree
+        shell: cmd
+        run: tree ./build/
+
+      # - name: Archive Release
+      #   uses: thedoctor0/zip-release@0.7.5
+      #   with:
+      #     type: 'zip'
+      #     filename: 'Picf-Windows.zip'
+      #     path: './build/*'
+          
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Picf-Windows
+          path: "./build/*"
+  
