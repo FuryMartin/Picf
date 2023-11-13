@@ -23,4 +23,11 @@ jobs:
       - name: Packaging 
         shell: cmd
         run: conda activate Picf & pyinstaller main.py
-        
+
+      - name: Archive Release
+        uses: thedoctor0/zip-release@0.7.5
+        with:
+          type: 'zip'
+          filename: 'Picf-Windows.zip'
+          directory: './build/main'
+          
