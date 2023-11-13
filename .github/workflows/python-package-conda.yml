@@ -22,7 +22,11 @@ jobs:
 
       - name: Packaging 
         shell: cmd
-        run: conda activate Picf & pyinstaller main.py
+        run: conda activate Picf & pyinstaller main.spec
+
+      - name: Tree
+        shell: cmd
+        run: tree ./build/
 
       # - name: Archive Release
       #   uses: thedoctor0/zip-release@0.7.5
