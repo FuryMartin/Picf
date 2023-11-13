@@ -29,5 +29,10 @@ jobs:
         with:
           type: 'zip'
           filename: 'Picf-Windows.zip'
-          directory: './build/main'
-          
+          path: './build/main'
+      
+      - name: Upload Release
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          artifacts: "Picf-Windows.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
