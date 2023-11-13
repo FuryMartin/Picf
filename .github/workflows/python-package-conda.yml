@@ -32,7 +32,7 @@ jobs:
           path: './build/'
           
       - name: Upload Artifact
-      - uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3
         with:
           name: Picf-Windows
           path: "Picf-Windows.zip"
