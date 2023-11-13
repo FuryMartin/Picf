@@ -24,16 +24,16 @@ jobs:
         shell: cmd
         run: conda activate Picf & pyinstaller main.py
 
-      - name: Archive Release
-        uses: thedoctor0/zip-release@0.7.5
-        with:
-          type: 'zip'
-          filename: 'Picf-Windows.zip'
-          path: './build/'
+      # - name: Archive Release
+      #   uses: thedoctor0/zip-release@0.7.5
+      #   with:
+      #     type: 'zip'
+      #     filename: 'Picf-Windows.zip'
+      #     path: './build/*'
           
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: Picf-Windows
-          path: "Picf-Windows.zip"
+          path: "./build/*"
   
