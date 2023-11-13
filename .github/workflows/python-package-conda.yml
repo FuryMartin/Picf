@@ -18,7 +18,7 @@ jobs:
   
       - name: Build Environment
         shell: cmd
-        run: conda activate Picf & ./setup.bat
+        run: conda activate Picf & setup.bat
 
       - name: Packaging 
         shell: cmd
