@@ -15,19 +15,24 @@ jobs:
           environment-file: ./resources/environment.yml
           python-version: 3.8.5
           auto-activate-base: false
-      - name: Activate Picf
-        shell: cmd
-        run: conda activate Picf
-        
-      - name: Build Environment
-        shell: cmd
-        run: ./setup.bat
-
+          
       - name: Install pyinstaller
         shell: cmd
-        run: conda install pyinstaller
+        run: |
+          conda activate Picf
+          conda install pyinstaller
+          conda -info e
+          pyinstaller -v
+          
+      - name: Build Environment
+        shell: cmd
+        run: |
+          conda activate Picf
+          ./setup.bat
 
       - name: Packaging 
         shell: cmd
-        run: pyinstaller main.py
+        run: |
+          conda activate Picf
+          pyinstaller main.py
         
