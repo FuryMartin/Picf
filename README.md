@@ -21,6 +21,8 @@ Picf 主要具有三大功能，均为老师所要求的功能：
 - #### **美观的图形化界面**
     借助于开源项目，Picf 拥有相对美观、现代的GUI界面，使得分类、搜索、筛查的结果呈现更加直观。
 ## 安装步骤:
+> 为便于体验本项目，提供 Windows-x64 环境下使用 pyinstaller 打包的实验性版本，请前往 [Release](https://github.com/FuryMartin/Picf/releases/tag/v1.6) 下载 `Picf-v1.6-windows-x64.zip` 并解压，运行 `main.exe` 。
+> 若在运行该实验版本时遇到错误或完全无法运行，请参考下面的步骤进行环境配置并运行。
 - ### 安装 Anaconda（如果已有，跳过本步）
 - ### 下载最新的 Release
 - ### 运行`setup.bat`
