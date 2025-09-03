@@ -1,0 +1,114 @@
+[tool.poetry]
+name = "imagededup"
+version = "0.1.0"
+description = "A python package that provides functionality to find duplicates in a collection of images using a variety of algorithms"
+authors = [
+    "Tanuj Jain <tanuj.jain.10@gmail.com>",
+    "Christopher Lennan <christopherlennan@gmail.com>",
+    "Zubin John <zrjohn@yahoo.com>",
+    "Dat Tran <datitran@gmail.com>"
+]
+maintainers = ["FuryMartin"]
+readme = "README.md"
+license = "Apache-2.0"
+homepage = "https://idealo.github.io/imagededup/"
+repository = "https://github.com/idealo/imagededup"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.12"
+opencv-python = "^4.0.1"
+networkx = "^2.5"
+pillow = "^8.4.0"
+tqdm = "^4.56.0"
+scikit-learn = "^1.0.1"
+PyWavelets = "^1.1.1"
+imutils = "^0.5.4"
+numpy = "^1.20.0"
+setuptools = "^65.0.0"
+cython = "^0.29.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+pytest-mock = "^3.11.0"
+pyinstaller = "^5.13.0"
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "setuptools", "wheel", "cython"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--verbose",
+    "--cov=imagededup",
+    "--cov=gui",
+    "--cov=utils",
+    "--cov-report=term-missing",
+    "--cov-report=html:htmlcov",
+    "--cov-report=xml:coverage.xml",
+    "--cov-fail-under=80"
+]
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests",
+    "slow: Slow running tests"
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning"
+]
+
+[tool.coverage.run]
+source = ["imagededup", "gui", "utils"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__init__.py",
+    "*/setup.py",
+    "*/venv/*",
+    "*/.venv/*",
+    "*/env/*",
+    "*/.env/*",
+    "*/build/*",
+    "*/dist/*",
+    "*/htmlcov/*",
+    "*/.pytest_cache/*",
+    "*/.coverage",
+    "*/coverage.xml"
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod"
+]
+show_missing = true
+precision = 2
+
+[tool.coverage.html]
+directory = "htmlcov"
